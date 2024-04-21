@@ -1,0 +1,39 @@
+{% load static %}
+ <!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="{% static 'reading.css' %}">
+<link rel="stylesheet" href="{% static 'set.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{% endblock %}</title>
+<meta {% block meta %}{% endblock} >
+
+</head>
+<body>
+	<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Smart Irrigation System For Mixing Farming</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="/reading">Home</a>
+    <a href="/set">Set Thresholds for Plants</a>
+    <a href="#">Recomendation Threshold for Different Plant</a>
+    <a href="#">Manual How to Use</a>
+  </div>
+
+  {% block content %}
+  {% endblock %}
+
+    <div class="right">
+    <h2>SIS4MF</h2>
+    <p>The SMART IRRIGATION SYSTEM FOR MIXED FARMING(SIS4MF) is a project aimed to designing
+a system that uses sensors to monitor soil moisture levels, and automatically adjusts the irrigation
+as needed. The system will be connected to a Web application that allows farmers to monitor
+and control the irrigation remotely.</p>
+  </div>
+</div>
+</body>
+</html>

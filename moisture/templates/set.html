@@ -1,0 +1,288 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Irrigation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #66A266; 
+            text-align: center;
+        }
+
+        h1 {
+            color: #f4f9f4;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #add4ad;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 45%;
+            text-align: left;
+        }
+
+        h2 {
+            color: #f4f9f4;
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* For laptops and desktops */
+            li {
+                width: 50%;
+                float: left;
+                margin-right: 2%;
+            }
+            button {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body> 
+    <div style="align-items:center;">
+    <h1>Thresholds</h1>
+    <ul>
+        {% for x in mymembers %}
+            <li>
+                <h2>Moisture min 1: {{ x.minsensor_1 }}</h2>
+                <h2>Moisture max 1: {{ x.maxsensor_1 }}</h2>
+                <h2>Moisture min 2: {{ x.minsensor_2 }}</h2>
+                <h2>Moisture max 2: {{ x.maxsensor_2 }}</h2>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div style="clear:both;"></div>
+    <h1>Set Thresholds</h1>
+    <form action="http://127.0.0.1:8000/uploadsettingWeb/" method="GET">
+        <div style="margin: 0 auto; max-width: 300px ; color: #f4f9f4;">
+            <input type="hidden" id="id" name="id" value="1">
+            <div>
+                <label for="min1">Moisture min 1</label>
+                <input type="number" id="min1" name="minsensor_1">
+                <label for="min1">Moisture min 1</label>
+                <input type="number" id="min1" name="minsensor_1">
+            </div>
+            <div>
+                <label for="max21">Moisture max 1</label>
+                <input type="number" id="max21" name="maxsensor_1">
+            </div>
+            <div>
+                <label for="min2">Moisture min 2</label>
+                <input type="number" id="min2" name="minsensor_2">
+            </div>
+            <div>
+                <label for="max2">Moisture max 2</label>
+                <input type="number" id="max2" name="maxsensor_2">
+            </div>
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+ -->
+{% load static %}
+ <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Set Thresholds</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #66A266; 
+/*            background-image: url('Smart-irrigation.jpg');*/
+            text-align: center;
+        }
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+
+
+}
+/*
+.menu a {
+  background-color: #66A266;
+  padding: 8px;
+  margin-top: 1px;
+  display: block;
+  width: 100%;
+  color: black;
+  border-style: solid;
+  border-radius: 0.5px;
+  border-color: #228B22;
+  cursor: pointer;
+
+}*/
+.menu a:link, a:visited {
+  background-color: #228B22;
+  color: white;
+  width: 100%;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.menu a:hover, a:active {
+  border-radius: 25px;
+  border: 2px solid #66A266;
+  background-color: #66A266;
+  transition: background-color 0.3s;
+
+}
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+.here {
+    border-radius: 5px;
+  background-color: inherit;
+  padding: 20px;
+}
+
+        input{
+            width:auto;
+            padding: 20px 20px;
+            margin-top:10px;
+            display: inline-block;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: green;
+        }
+        button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Smart Irrigation System For Mixing Farming</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="/reading">Home</a>
+    <a href="/set">Set Thresholds And Adding Plant</a>
+    <a href="#">Recomendation Threshold for Different Plant</a>
+    <a href="#">Manual How to Use</a>
+    <a href="#">Help</a>
+  </div>
+
+  <div class="main">
+            <form action="http://127.0.0.1:8000/uploadsettingWeb/" method="GET">
+        <div  *style="margin: 0 auto; max-width: 30px ; color: red; "*> 
+            <div class="here">
+            <input type="hidden" id="id" name="id" value="1">
+            
+                <label for="plant_1">Plant 1 :</label>
+                <input type="text" id="plant_1" name="plant_1" required> <br>
+                <label for="min1">Moisture min 1</label>
+                <input type="number" id="min1" name="minsensor_1" min="0" max="100" placeholder="0% - 100%" required>
+                <label for="max21">Moisture max 1</label>
+                <input type="number" id="max21" name="maxsensor_1" min="0" max="100" placeholder="0% - 100%" required> <br>
+    
+                <label for="plant_2">Plant 2 :</label>
+                <input type="text" id="plant_2" name="plant_2" required> <br>
+                <label for="min2">Moisture min 2</label>
+                <input type="number" id="min2" name="minsensor_2" min="0" max="100" placeholder="0% - 100%" required>
+                <label for="max2">Moisture max 2</label>
+                <input type="number" id="max2" name="maxsensor_2" min="0" max="100" placeholder="0% - 100%" required> <br>
+          
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+
+  <div class="right">
+    <h2>SIS4MF</h2>
+    <p>The SMART IRRIGATION SYSTEM FOR MIXED FARMING(SIS4MF) is a project aimed to designing
+a system that uses sensors to monitor soil moisture levels, and automatically adjusts the irrigation
+as needed. The system will be connected to a Web application that allows farmers to monitor
+and control the irrigation remotely.</p>
+  </div>
+</div>
+
+<!-- <div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;margin-bottom: 0px;">© copyright w3schools.com</div> -->
+
+</body>
+
+<!-- Mirrored from www.w3schools.com/html/tryit.asp?filename=tryhtml_responsive_media_query3 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Sep 2022 14:27:02 GMT -->
+</html>
