@@ -1,7 +1,5 @@
 from django.db import models
-
-# Create your models here.
-
+from datetime import datetime, timezone
 
 class DataTable(models.Model):
   id = models.IntegerField(primary_key=True)
@@ -11,8 +9,17 @@ class DataTable(models.Model):
   humidity=models.IntegerField()
   pump_1=models.BooleanField()
   pump_2=models.BooleanField()
+  update_at = models.DateTimeField(auto_now=True)
   
-  
+  def get_time_dft_in_min(self):
+    if not self.update_at.tzinfo:
+        self.update_at = self.update_at.astimezone(timezone.utc)
+
+    time_delta = datetime.now(timezone.utc) - self.update_at
+    return int(time_delta.total_seconds() / 60)
+
+    # time_delta = datetime.now() - self.update_at
+    # return int(time_delta.total_seconds / 60)
   
 
 
